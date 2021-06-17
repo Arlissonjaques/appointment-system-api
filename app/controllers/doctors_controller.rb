@@ -3,6 +3,7 @@
 # controller responsible for doctor
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show update destroy]
+  rescue_from ActiveRecord::DeleteRestrictionError, with: :not_possible_delete
 
   def index
     render json: Doctor.all
@@ -31,7 +32,7 @@ class DoctorsController < ApplicationController
   end
 
   def destroy
-    @doctor.destroy
+    @doctor.destroy!
   end
 
   private
@@ -42,5 +43,11 @@ class DoctorsController < ApplicationController
 
   def doctor_params
     params.permit(:name, :crm, :crm_uf)
+  end
+
+  def not_possible_delete
+    render json:
+             { error: { message: 'this doctor still has pending appointments' } },
+           status: 422
   end
 end
