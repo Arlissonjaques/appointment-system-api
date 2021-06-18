@@ -56,3 +56,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # CPF validation for ActiveModel. Read more: https://rubygems.org/gems/cpf_validator
 gem 'cpf_validator'
+# Object-based searching. Read more: https://github.com/activerecord-hackery/ransack
+gem 'ransack'
