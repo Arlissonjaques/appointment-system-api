@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: %i[show update destroy]
 
   def index
-    render json: Patient.all
+    @patient = Patient.all
   end
 
   def show
