@@ -6,7 +6,7 @@ class DoctorsController < ApplicationController
   rescue_from ActiveRecord::DeleteRestrictionError, with: :not_possible_delete
 
   def index
-    render json: Doctor.all
+    @doctor = Doctor.all
   end
 
   def show
