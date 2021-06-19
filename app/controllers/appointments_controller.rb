@@ -38,6 +38,8 @@ class AppointmentsController < ApplicationController
 
   def set_appointments
     @appointment = Appointment.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render status: 404, json: {}
   end
 
   def appointment_params

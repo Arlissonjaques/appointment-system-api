@@ -38,6 +38,8 @@ class PatientsController < ApplicationController
 
   def set_patient
     @patient = Patient.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render status: 404, json: {}
   end
 
   def patient_params

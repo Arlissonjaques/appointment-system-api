@@ -39,6 +39,8 @@ class DoctorsController < ApplicationController
 
   def set_doctor
     @doctor = Doctor.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render status: 404, json: {}
   end
 
   def doctor_params
