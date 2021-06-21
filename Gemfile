@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'cpf_validator'
 # Object-based searching. Read more: https://github.com/activerecord-hackery/ransack
 gem 'ransack'
+# Generates Brazilian CPF numbers for use in testing. Read more: https://github.com/bernardo/cpf_faker
+gem 'cpf_faker'
