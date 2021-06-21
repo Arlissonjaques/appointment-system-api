@@ -10,9 +10,9 @@
 #  updated_at :datetime         not null
 
 class Doctor < ApplicationRecord
-  has_many :appointments
+  has_many :appointments, dependent: :restrict_with_exception
   has_many :patients, through: :appointments
 
   validates :name, :crm, :crm_uf, presence: true
-  validates :crm, :crm_uf, uniqueness: true
+  validates :crm, uniqueness: true
 end

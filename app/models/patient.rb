@@ -16,4 +16,5 @@ class Patient < ApplicationRecord
   has_many :doctors, through: :appointments
 
   validates :name, :birth_date, :cpf, presence: true
+  validates :cpf, uniqueness: true, cpf: true
 end

@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointments, only: %i[show update destroy]
 
   def index
-    render json: Appointment.all
+    @appointment = Appointment.all
   end
 
   def show
@@ -38,6 +38,8 @@ class AppointmentsController < ApplicationController
 
   def set_appointments
     @appointment = Appointment.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render status: 404, json: {}
   end
 
   def appointment_params

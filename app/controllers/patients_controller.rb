@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: %i[show update destroy]
 
   def index
-    render json: Patient.all
+    @patient = Patient.all
   end
 
   def show
@@ -38,6 +38,8 @@ class PatientsController < ApplicationController
 
   def set_patient
     @patient = Patient.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render status: 404, json: {}
   end
 
   def patient_params
